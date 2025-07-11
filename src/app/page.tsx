@@ -1,3 +1,4 @@
+// npm install --save-dev typescript @types/react @types/react-dom
 import Image from "next/image";
 
 export default function Home() {
