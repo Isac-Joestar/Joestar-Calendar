@@ -5,13 +5,29 @@ function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function HandleSubmit(e: React.FormEvent){
-        e.preventDefault
-        alert(`
-            Login Successful,
-            E-mail: ${email}
-            Senha: ${password}
-        `);
+    async function HandleSubmit(e: React.FormEvent){
+        e.preventDefault()
+        
+        try{
+            const res = await fetch("/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({email, password})
+            })
+
+            const data = await res.json()
+            console.log("Resposta da API:", data);
+           
+            if (!res.ok) {
+                alert(`Erro ao registrar: ${data.message || "Erro"}`);
+                return;
+            }
+        } catch (err){
+            console.error(err)
+            alert('erro de conexão com o servidor')
+        }
     }
 
     return(
