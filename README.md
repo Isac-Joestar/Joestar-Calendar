@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📆 Joestar Calendar — Checklist de Desenvolvimento
 
-## Getting Started
+## 📌 Planejamento e Definição
 
-First, run the development server:
+- [x] Definir objetivo e público-alvo do sistema
+- [ ] Mapear funcionalidades essenciais
+- [ ] Escolher design system ou estilo visual base
+- [ ] Criar wireframes das telas principais
+- [ ] Definir modelo de dados (usuários, clientes, agendamentos)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Configuração do Ambiente
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [ ] Criar repositório GitHub
+- [ ] Configurar ambiente com Docker (MongoDB + Node.js)
+- [ ] Estrutura inicial do projeto (monorepo ou separado)
+- [ ] Instalar ESLint, Prettier e Husky
+- [ ] Configurar variáveis de ambiente (.env)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Front-end (Next.js + React)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [ ] Criar estrutura base com Next.js e TypeScript
+- [ ] Implementar layout com Styled-components
+- [ ] Página de Login e Registro
+- [ ] Página de Dashboard
+- [ ] Página da Agenda com FullCalendar
+- [ ] Página de Cadastro de Clientes
+- [ ] Formulário de Novo Agendamento
+- [ ] Criar componentes reutilizáveis
+- [ ] Validação de formulários
+- [ ] Integração com API
 
-## Learn More
+## ⚙️ Back-end (Node.js + Express)
 
-To learn more about Next.js, take a look at the following resources:
+- [ ] Criar estrutura base com Express e TypeScript
+- [ ] Conectar com banco de dados (MongoDB via Prisma)
+- [ ] Rotas de autenticação (login/registro)
+- [ ] Rotas de agendamentos (CRUD)
+- [ ] Rotas de clientes (CRUD)
+- [ ] Middleware de autenticação (JWT)
+- [ ] Tratamento de erros e respostas padronizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Autenticação e Segurança
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [ ] Implementar login com JWT
+- [ ] Proteger rotas com middleware
+- [ ] Criptografar senhas com bcrypt
+- [ ] Configurar cookie HTTP-only (Next.js)
 
-## Deploy on Vercel
+## 📩 E-mails com Nodemailer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Configurar serviço gratuito (ex: Gmail)
+- [ ] Criar template de e-mail (HTML básico)
+- [ ] Enviar e-mails de confirmação de agendamento
+- [ ] (Opcional) Implementar lembrete por e-mail via CRON
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ☁️ Upload de Imagem (Cloudinary)
+
+- [ ] Criar conta gratuita no Cloudinary
+- [ ] Implementar upload de imagem de perfil/cliente
+- [ ] Armazenar URL no banco de dados
+
+## 🚀 Deploy
+
+- [ ] Deploy do front-end no Vercel
+- [ ] Deploy do back-end no Render ou Railway (free tier)
+- [ ] Usar MongoDB Atlas (free tier)
+- [ ] Configurar variáveis de ambiente no deploy
+- [ ] Testar funcionalidades em produção
+
+## 📋 Documentação e Portfólio
+
+- [ ] Criar README.md completo no GitHub
+- [ ] Criar seção no portfólio apresentando o projeto
+- [ ] Adicionar prints ou vídeo demonstrativo
+- [ ] Disponibilizar link do projeto online e do repositório
+
+## 💡 Ideias Futuras (Extras)
+
+- [ ] Integração com Stripe (modo teste)
+- [ ] Painel administrativo com métricas
+- [ ] Notificações via WhatsApp ou in-app
+- [ ] Aplicativo mobile com React Native
+
