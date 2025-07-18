@@ -37,14 +37,18 @@ function Login(){
                     type="email" 
                     placeholder="E-mail" 
                     value={email}
+                    required
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full h-[40px] p-4 bg-gray-300 rounded-[5px] text-black"/>
                 <input 
                     type="password" 
                     placeholder="Digite sua senha"
                     value={password}
+                    required
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full h-[40px] p-4 bg-gray-300 rounded-[5px] text-black"/>
+
+                
                 <button type="submit" className="h-8  w-[100px] border-2 rounded-[5px] text-black cursor-pointer">Entrar</button>
             </form>
         </main>
