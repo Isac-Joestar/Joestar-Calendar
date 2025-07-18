@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.input-default{
+  @apply bg-gray-200 w-full h-9 rounded-[7px] p-4 text-black;
+}
