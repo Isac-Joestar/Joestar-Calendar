@@ -3,23 +3,22 @@
 ## 📌 Planejamento e Definição
 
 - [x] Definir objetivo e público-alvo do sistema
-- [ ] Mapear funcionalidades essenciais
-- [ ] Escolher design system ou estilo visual base
+- [x] Mapear funcionalidades essenciais
+- [x] Escolher design system ou estilo visual base
 - [ ] Criar wireframes das telas principais
-- [ ] Definir modelo de dados (usuários, clientes, agendamentos)
+- [x] Definir modelo de dados (usuários, clientes, agendamentos)
 
 ## 🛠️ Configuração do Ambiente
 
-- [ ] Criar repositório GitHub
-- [ ] Configurar ambiente com Docker (MongoDB + Node.js)
-- [ ] Estrutura inicial do projeto (monorepo ou separado)
-- [ ] Instalar ESLint, Prettier e Husky
-- [ ] Configurar variáveis de ambiente (.env)
+- [x] Criar repositório GitHub
+- [x] Configurar ambiente com Docker (MongoDB + Node.js)
+- [x] Estrutura inicial do projeto (monorepo ou separado)
+- [x] Instalar ESLint, Prettier e Husky
+- [x] Configurar variáveis de ambiente (.env)
 
 ## 🎨 Front-end (Next.js + React)
 
-- [ ] Criar estrutura base com Next.js e TypeScript
-- [ ] Implementar layout com Styled-components
+- [x] Criar estrutura base com Next.js e TypeScript
 - [ ] Página de Login e Registro
 - [ ] Página de Dashboard
 - [ ] Página da Agenda com FullCalendar
@@ -33,7 +32,7 @@
 
 - [ ] Criar estrutura base com Express e TypeScript
 - [ ] Conectar com banco de dados (MongoDB via Prisma)
-- [ ] Rotas de autenticação (login/registro)
+- [x] Rotas de autenticação (login/registro)
 - [ ] Rotas de agendamentos (CRUD)
 - [ ] Rotas de clientes (CRUD)
 - [ ] Middleware de autenticação (JWT)
@@ -41,9 +40,9 @@
 
 ## 🔐 Autenticação e Segurança
 
-- [ ] Implementar login com JWT
+- [x] Implementar login com JWT
 - [ ] Proteger rotas com middleware
-- [ ] Criptografar senhas com bcrypt
+- [x] Criptografar senhas com bcrypt
 - [ ] Configurar cookie HTTP-only (Next.js)
 
 ## 📩 E-mails com Nodemailer
@@ -69,8 +68,8 @@
 
 ## 📋 Documentação e Portfólio
 
-- [ ] Criar README.md completo no GitHub
-- [ ] Criar seção no portfólio apresentando o projeto
+- [x] Criar README.md completo no GitHub
+- [x] Criar seção no portfólio apresentando o projeto
 - [ ] Adicionar prints ou vídeo demonstrativo
 - [ ] Disponibilizar link do projeto online e do repositório
 
