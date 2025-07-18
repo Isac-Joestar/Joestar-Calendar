@@ -1,21 +1,27 @@
 import mongoose, { Schema, model, models, Document } from 'mongoose';
 
-export type UserRole = 'client' | 'provider';
+export type UserRole = 'Client' | 'Provider';
 
 export interface IUser extends Document {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   role: UserRole;
   phone?: string;
-  services?: mongoose.Types.ObjectId[]; 
+  service?: string; 
   createdAt: Date;
   updatedAt: Date;
 }
 
 const UserSchema = new Schema<IUser>(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    lastName: {
       type: String,
       required: true,
       trim: true
@@ -33,18 +39,15 @@ const UserSchema = new Schema<IUser>(
     },
     role: {
       type: String,
-      enum: ['client', 'provider'],
+      enum: ['Client', 'Provider'],
       required: true
     },
     phone: {
       type: String
     },
-    services: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Service'
-      }
-    ]
+    service: {
+      type: String
+    }
   },
   {
     timestamps: true

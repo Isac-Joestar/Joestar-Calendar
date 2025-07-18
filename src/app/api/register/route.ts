@@ -8,9 +8,9 @@ export async function POST(req: Request) {
 
     try{
         const body = await req.json();
-        const {username, email, password, role, phone, services } = body;
+        const {firstName, lastName, email, password, role, phone, service } = body;
         
-        if(!username || !email || !password || !role){
+        if(!firstName || !lastName || !email || !password || !role){
             return NextResponse.json(
                 {message: "Preencha todos os campos obrigatórios"}, 
                 {status: 400}
@@ -27,12 +27,13 @@ export async function POST(req: Request) {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
-            name: username,
+            firstName,
+            lastName,
             email,
             password: hashedPassword,
             role,
             phone,
-            services: role === "provider" ? [services] : []
+            service: role === "Provider" ? service : ''
         });
 
         await newUser.save();

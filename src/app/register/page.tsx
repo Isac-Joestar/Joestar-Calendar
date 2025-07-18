@@ -32,7 +32,7 @@ function Register(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [role, setRole ] = useState(roles[0]);
-    const [service, setService] = useState(services[0])
+    const [service, setService] = useState("")
 
 
     async function HandleSubmit(e: React.FormEvent){
@@ -44,7 +44,7 @@ function Register(){
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({firstName, lastName, password, email, role, phone, service})
+                body: JSON.stringify({firstName, lastName, email, phone, password, role, service})
             })
 
             const data = await res.json()
@@ -92,7 +92,7 @@ function Register(){
                             <input 
                                 type="text" 
                                 id="lastName"
-                                value={firstName}
+                                value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
                                 required
                                 className="input-default"
@@ -165,7 +165,7 @@ function Register(){
                             </label>
                             <Listbox value={role} onChange={setRole}>
                                 <div className="relative">
-                                <ListboxButton className="w-full h-9 bg-gray-200 rounded-[7px] text-black px-4 pr-10 text-left">
+                                <ListboxButton className="w-full h-9 bg-gray-200 rounded-[7px] text-black px-4 pr-10 text-left cursor-pointer">
                                     {role}
                                     <IoIosArrowDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600" />
                                 </ListboxButton>
@@ -196,26 +196,28 @@ function Register(){
                             </label>
                             <Listbox value={service} onChange={setService}>
                                 <div className="relative">
-                                <ListboxButton className="w-full h-9 bg-gray-200 rounded-[7px] text-black px-4 pr-10 text-left">
-                                    {service}
+                                <ListboxButton className={`w-full h-9 bg-gray-200 rounded-[7px] text-black px-4 pr-10 text-left ${
+                                    role === 'Provider' ? 'cursor-pointer' : 'cursor-not-allowed'}`}>
+                                    {role === 'Provider' ? service : 'for providers only'}
                                     <IoIosArrowDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600" />
                                 </ListboxButton>
-
-                                <ListboxOptions className="absolute z-10 mt-1 w-full bg-white rounded-md shadow-md max-h-28 overflow-y-auto">
-                                    {services.map((service, idx) => (
-                                    <ListboxOption
-                                        key={idx}
-                                        value={service}
-                                        className={({ active }) =>
-                                        `cursor-pointer px-4 py-2 ${
-                                            active ? 'bg-blue-100 text-blue-700' : 'text-gray-800'
-                                        }`
-                                        }
-                                    >
-                                        {service}
-                                    </ListboxOption>
-                                    ))}
-                                </ListboxOptions>
+                                    { role === 'Provider' && (                
+                                        <ListboxOptions className="absolute z-10 mt-1 w-full bg-white rounded-md shadow-md max-h-28 overflow-y-auto">
+                                            {services.map((service, idx) => (
+                                            <ListboxOption
+                                                key={idx}
+                                                value={service}
+                                                className={({ active }) =>
+                                                `cursor-pointer px-4 py-2 ${
+                                                    active ? 'bg-blue-100 text-blue-700' : 'text-gray-800'
+                                                }`
+                                                }
+                                            >
+                                                {service}
+                                            </ListboxOption>
+                                            ))}
+                                        </ListboxOptions>
+                                    )}            
                                 </div>
                             </Listbox>
                         </div>
