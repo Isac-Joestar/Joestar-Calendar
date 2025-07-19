@@ -1,82 +1,86 @@
-# 📆 Joestar Calendar — Checklist de Desenvolvimento
+# 📆 Joestar Calendar
 
-## 📌 Planejamento e Definição
+Sistema de agendamento online desenvolvido com foco em profissionais autônomos e pequenas empresas, como barbearias, clínicas e consultórios. Idealizado como um MVP funcional com visão de produto real.
 
-- [x] Definir objetivo e público-alvo do sistema
-- [x] Mapear funcionalidades essenciais
-- [x] Escolher design system ou estilo visual base
-- [ ] Criar wireframes das telas principais
-- [x] Definir modelo de dados (usuários, clientes, agendamentos)
+---
 
-## 🛠️ Configuração do Ambiente
+## ✨ Funcionalidades
 
-- [x] Criar repositório GitHub
-- [x] Configurar ambiente com Docker (MongoDB + Node.js)
-- [x] Estrutura inicial do projeto (monorepo ou separado)
-- [x] Instalar ESLint, Prettier e Husky
-- [x] Configurar variáveis de ambiente (.env)
+- Cadastro e login de profissionais
+- Dashboard com visualização de agendamentos
+- Cadastro de clientes
+- Agendamento com seleção de data e horário
+- Confirmação por e-mail (em desenvolvimento)
+- Upload de imagem de perfil (em breve)
+- Deploy em nuvem (Vercel + Render)
+- Responsivo e com interface moderna
 
-## 🎨 Front-end (Next.js + React)
+---
 
-- [x] Criar estrutura base com Next.js e TypeScript
-- [ ] Página de Login e Registro
-- [ ] Página de Dashboard
-- [ ] Página da Agenda com FullCalendar
-- [ ] Página de Cadastro de Clientes
-- [ ] Formulário de Novo Agendamento
-- [ ] Criar componentes reutilizáveis
-- [ ] Validação de formulários
-- [ ] Integração com API
+## 🎯 Público-Alvo
 
-## ⚙️ Back-end (Node.js + Express)
+Profissionais autônomos que precisam de um sistema simples e eficiente para gerenciar seus horários, como:
 
-- [ ] Criar estrutura base com Express e TypeScript
-- [ ] Conectar com banco de dados (MongoDB via Prisma)
-- [x] Rotas de autenticação (login/registro)
-- [ ] Rotas de agendamentos (CRUD)
-- [ ] Rotas de clientes (CRUD)
-- [ ] Middleware de autenticação (JWT)
-- [ ] Tratamento de erros e respostas padronizadas
+- Barbearias
+- Estúdios de tatuagem
+- Psicólogos
+- Esteticistas
+- Fisioterapeutas
 
-## 🔐 Autenticação e Segurança
+---
 
-- [x] Implementar login com JWT
-- [ ] Proteger rotas com middleware
-- [x] Criptografar senhas com bcrypt
-- [ ] Configurar cookie HTTP-only (Next.js)
+## 🚀 Tecnologias Utilizadas
 
-## 📩 E-mails com Nodemailer
+**Front-end:**
+- Next.js + React
+- TypeScript
+- Tailwind CSS
+- FullCalendar
 
-- [ ] Configurar serviço gratuito (ex: Gmail)
-- [ ] Criar template de e-mail (HTML básico)
-- [ ] Enviar e-mails de confirmação de agendamento
-- [ ] (Opcional) Implementar lembrete por e-mail via CRON
+**Back-end:**
+- Node.js + Express
+- TypeScript
+- MongoDB com Prisma ORM
+- JWT para autenticação
+- Nodemailer (e-mail)
 
-## ☁️ Upload de Imagem (Cloudinary)
+**Outros:**
+- Docker
+- Vercel (front-end)
+- Railway/Render (back-end)
+- MongoDB Atlas
+- Cloudinary (upload de imagens)
 
-- [ ] Criar conta gratuita no Cloudinary
-- [ ] Implementar upload de imagem de perfil/cliente
-- [ ] Armazenar URL no banco de dados
+---
 
-## 🚀 Deploy
+## 📦 Organização do Projeto
 
-- [ ] Deploy do front-end no Vercel
-- [ ] Deploy do back-end no Render ou Railway (free tier)
-- [ ] Usar MongoDB Atlas (free tier)
-- [ ] Configurar variáveis de ambiente no deploy
-- [ ] Testar funcionalidades em produção
+- `client/` → Front-end (Next.js)
+- `server/` → Back-end (Express)
+- `prisma/` → Modelos do banco de dados
+- `.env.example` → Arquivo de exemplo para variáveis de ambiente
 
-## 📋 Documentação e Portfólio
+---
 
-- [x] Criar README.md completo no GitHub
-- [x] Criar seção no portfólio apresentando o projeto
-- [ ] Adicionar prints ou vídeo demonstrativo
-- [ ] Disponibilizar link do projeto online e do repositório
+## 🧪 Status do Projeto
 
-## 💡 Ideias Futuras (Extras)
+📌 MVP em desenvolvimento com foco em entrega funcional para portfólio e demonstração comercial.
+🎯 Foco em um nicho por vez para validação.
 
-- [ ] Integração com Stripe (modo teste)
-- [ ] Painel administrativo com métricas
-- [ ] Notificações via WhatsApp ou in-app
-- [ ] Aplicativo mobile com React Native
+---
 
+## 🔒 Licença
+
+Este projeto está licenciado sob a Licença MIT — sinta-se à vontade para estudar o código, mas mantenha os créditos.
+
+---
+
+## 👨‍💼 Sobre o Autor
+
+**Isac Joestar** — Desenvolvedor Web Full Stack
+Apaixonado por criar soluções digitais que resolvem problemas reais.
+[LinkedIn](https://www.linkedin.com/in/isac-mikael-914b2a191/) • [Portfólio](https://joestar-code.vercel.app/)
+
+--- 
+
+👉 Veja o progresso em [development-checklist.md](./development-checklist.md)
