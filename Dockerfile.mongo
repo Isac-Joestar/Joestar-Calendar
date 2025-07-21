@@ -1,0 +1,4 @@
+FROM mongo:7
+
+COPY mongodb-keyfile /mongo-keyfile
+RUN chmod 400 /mongo-keyfile && chown 999:999 /mongo-keyfile

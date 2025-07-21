@@ -12,7 +12,7 @@ export default async function connectMongoDB() {
   
     return (
         mongoose.connect(uri)
-            .then(() => console.log('✅ MongoDB conectado com sucesso!'))
+            .then(() => console.log('✅ MongoDB conectado com sucesso!', uri))
             .catch((err) => console.error('🚫 Erro ao conectar no MongoDB:', err))
 
     )

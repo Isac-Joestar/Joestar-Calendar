@@ -2,12 +2,15 @@ version: '3.8'
 
 services:
   mongodb:
-    image: mongo:7
-    container_name: mongo_container
+    build:
+      context: .
+      dockerfile: Dockerfile.mongo
+    container_name: joestar-calendar
     ports:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+    command: ["mongod", "--replSet", "rs0", "--auth", "--keyFile", "/mongo-keyfile"]
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example

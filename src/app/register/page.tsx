@@ -25,8 +25,8 @@ const roles = [
     'Provider'
 ]
 function Register(){
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
@@ -44,7 +44,7 @@ function Register(){
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({firstName, lastName, email, phone, password, role, service})
+                body: JSON.stringify({firstname, lastname, email, phone, password, role, service})
             })
 
             const data = await res.json()
@@ -71,29 +71,29 @@ function Register(){
                     <div className="w-full flex flex-row items-center justify-between gap-5">
                         <div className="flex flex-col w-full"> 
                             <label 
-                                htmlFor="firstName" 
+                                htmlFor="firstname" 
                                 className="text-black"
                                 >First Name</label>
                             <input 
                                 type="text" 
-                                id="firstName"
+                                id="firstname"
 
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
+                                value={firstname}
+                                onChange={(e) => setFirstname(e.target.value)}
                                 required
                                 className="input-default"
                                 />
                         </div>
                         <div className="flex flex-col w-full"> 
                             <label 
-                                htmlFor="lastName" 
+                                htmlFor="lastname" 
                                 className="text-black"
                                 >Last Name</label>
                             <input 
                                 type="text" 
-                                id="lastName"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                id="lastname"
+                                value={lastname}
+                                onChange={(e) => setLastname(e.target.value)}
                                 required
                                 className="input-default"
                                 />

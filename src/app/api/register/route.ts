@@ -1,23 +1,22 @@
 import {NextResponse} from "next/server"
 import bcrypt from "bcrypt";
-import User from "@/models/user";
-import connectMongoDB from '@/lib/mongodb';
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 export async function POST(req: Request) {
-    await connectMongoDB();
-
     try{
         const body = await req.json();
-        const {firstName, lastName, email, password, role, phone, service } = body;
+        const {firstname, lastname, email, password, role, phone, service } = body;
         
-        if(!firstName || !lastName || !email || !password || !role){
+        if(!firstname || !lastname || !email || !password || !role){
             return NextResponse.json(
                 {message: "Preencha todos os campos obrigatórios"}, 
                 {status: 400}
             )
         }
 
-        const existingUSer = await User.findOne({email});;
+        const existingUSer = await prisma.user.findUnique({where: {email}})
         if(existingUSer){
             return NextResponse.json(
                 {message: "Usuário já cadastrado"},
@@ -26,17 +25,17 @@ export async function POST(req: Request) {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({
-            firstName,
-            lastName,
-            email,
-            password: hashedPassword,
-            role,
-            phone,
-            service: role === "Provider" ? service : ''
+        await prisma.user.create({
+            data: {
+                firstname,
+                lastname,
+                email,
+                password: hashedPassword,
+                role,
+                phone,
+                service: role === "Provider" ? service : null
+            }
         });
-
-        await newUser.save();
 
         return NextResponse.json(
             {message: "Usuário criado com sucesso"},
@@ -48,5 +47,7 @@ export async function POST(req: Request) {
             {message: "Erro ao criar usuário"},
             {status: 500}
         )
+    } finally {
+        await prisma.$disconnect()
     }
 }
