@@ -5,11 +5,7 @@
 //   return NextResponse.json({ message: "Olá do Next.js!" });
 // }
 
-
-
-
 // export async function POST('/register', request: Request) {
 //   const body = await request.json();
 //   return NextResponse.json({ received: body });
 // }
-

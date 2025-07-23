@@ -1,4 +1,4 @@
-# 📆 Joestar Calendar 
+# 📆 Joestar Calendar
 
 ## 🎯 Etapa 1: Fundação e Direcionamento
 
@@ -14,9 +14,9 @@
 
 - [x] Configurar ambiente com Docker (MongoDB + Node)
 - [x] Estrutura inicial (front e back separados ou monorepo)
-- [ ] Configurar ESLint, Prettier, Husky
+- [x] Configurar ESLint, Prettier, Husky
 - [x] Configurar variáveis de ambiente
-- [ ] Instalar e preparar Prisma com MongoDB Atlas
+- [x] Instalar e preparar Prisma com MongoDB Atlas
 
 ## 🎨 Etapa 3: Front-end (MVP focado)
 

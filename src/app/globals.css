@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -25,6 +25,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.input-default{
+.input-default {
   @apply bg-gray-200 w-full h-9 rounded-[7px] p-4 text-black;
 }

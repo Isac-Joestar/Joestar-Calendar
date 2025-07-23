@@ -32,12 +32,14 @@ Profissionais autônomos que precisam de um sistema simples e eficiente para ger
 ## 🚀 Tecnologias Utilizadas
 
 **Front-end:**
+
 - Next.js + React
 - TypeScript
 - Tailwind CSS
 - FullCalendar
 
 **Back-end:**
+
 - Node.js + Express
 - TypeScript
 - MongoDB com Prisma ORM
@@ -45,6 +47,7 @@ Profissionais autônomos que precisam de um sistema simples e eficiente para ger
 - Nodemailer (e-mail)
 
 **Outros:**
+
 - Docker
 - Vercel (front-end)
 - Railway/Render (back-end)
@@ -81,6 +84,6 @@ Este projeto está licenciado sob a Licença MIT — sinta-se à vontade para es
 Apaixonado por criar soluções digitais que resolvem problemas reais.
 [LinkedIn](https://www.linkedin.com/in/isac-mikael-914b2a191/) • [Portfólio](https://joestar-code.vercel.app/)
 
---- 
+---
 
 👉 Veja o progresso em [development-checklist.md](./development-checklist.md)
