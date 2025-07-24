@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     )
   } catch (error) {
     return NextResponse.json(
-      { message: 'Erro ao realizar login' },
+      { message: 'Erro ao realizar login', error },
       { status: 500 },
     )
   }
