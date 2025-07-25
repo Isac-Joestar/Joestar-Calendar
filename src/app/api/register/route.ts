@@ -1,23 +1,33 @@
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcrypt'
 import { PrismaClient } from '@prisma/client'
+import { z } from 'zod'
 
 const prisma = new PrismaClient()
+
+const userSchema = z.object({
+  firstname: z.string().min(1),
+  lastname: z.string().min(1),
+  email: z.string().email(),
+  password: z.string().min(6),
+  role: z.enum(['Client', 'Provider']),
+  phone: z.string().optional(),
+  service: z.string().optional(),
+})
 
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-    const { firstname, lastname, email, password, role, phone, service } = body
 
-    if (!firstname || !lastname || !email || !password || !role) {
-      return NextResponse.json(
-        { message: 'Preencha todos os campos obrigatórios' },
-        { status: 400 },
-      )
+    const parsed = userSchema.safeParse(body)
+    if (!parsed.success) {
+      return NextResponse.json({ message: 'Dados inválidos' }, { status: 400 })
     }
 
-    const existingUSer = await prisma.user.findUnique({ where: { email } })
-    if (existingUSer) {
+    const { firstname, lastname, email, password, role, phone, service } = body
+
+    const existingUser = await prisma.user.findUnique({ where: { email } })
+    if (existingUser) {
       return NextResponse.json(
         { message: 'Usuário já cadastrado' },
         { status: 400 },
@@ -42,7 +52,7 @@ export async function POST(req: Request) {
       { status: 201 },
     )
   } catch (error) {
-    console.log('Erro no registro:', error)
+    console.error('Erro no registro:', error)
     return NextResponse.json(
       { message: 'Erro ao criar usuário' },
       { status: 500 },

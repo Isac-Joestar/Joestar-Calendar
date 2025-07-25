@@ -1,30 +1,37 @@
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import User from '@/models/user'
-import connectMongoDB from '@/lib/mongodb'
+import { PrismaClient } from '@prisma/client'
 
-const JWT_SECRET = process.env.JWT_SECRET!
+if (!process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET is not defined in environment variables.')
+}
+const JWT_SECRET = process.env.JWT_SECRET
 
+const prisma = new PrismaClient()
 export async function POST(req: Request) {
-  await connectMongoDB()
-  const { email, password } = await req.json()
-
   try {
-    const user = await User.findOne({ email }).select('+password')
-    if (!user) {
+    const { email, password } = await req.json()
+    if (!email || !password) {
       return NextResponse.json(
-        { message: 'Usuário não encontrado' },
-        { status: 404 },
+        { message: 'Email e senha são obrigatórios' },
+        { status: 400 },
       )
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password)
-    if (!passwordMatch) {
-      return NextResponse.json({ message: 'Senha incorreta' }, { status: 401 })
+    const user = await prisma.user.findUnique({
+      where: { email },
+      select: { id: true, email: true, password: true },
+    })
+
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return NextResponse.json(
+        { message: 'Credenciais inválidas' },
+        { status: 401 },
+      )
     }
 
-    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, {
+    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
       expiresIn: '1d',
     })
 
@@ -33,8 +40,9 @@ export async function POST(req: Request) {
       { status: 200 },
     )
   } catch (error) {
+    console.error('Erro ao realizar login:', error)
     return NextResponse.json(
-      { message: 'Erro ao realizar login', error },
+      { message: 'Erro interno no servidor' },
       { status: 500 },
     )
   }
