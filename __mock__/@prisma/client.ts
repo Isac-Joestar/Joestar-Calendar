@@ -1,10 +1,13 @@
 export const mockFindUnique = jest.fn()
+export const mockCreate = jest.fn()
 
-export class PrismaClient {
-  user = {
+export const prisma = {
+  user: {
     findUnique: mockFindUnique,
-    // Você pode adicionar outros métodos mockados que precisar
-  }
+    create: mockCreate,
+  },
+}
 
-  // Se usar outros modelos, adicione-os aqui da mesma forma
+export default {
+  prisma,
 }

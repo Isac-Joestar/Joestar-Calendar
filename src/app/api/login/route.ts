@@ -1,14 +1,13 @@
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@/src/lib/prisma'
 
 if (!process.env.JWT_SECRET) {
   throw new Error('JWT_SECRET is not defined in environment variables.')
 }
 const JWT_SECRET = process.env.JWT_SECRET
 
-const prisma = new PrismaClient()
 export async function POST(req: Request) {
   try {
     const { email, password } = await req.json()

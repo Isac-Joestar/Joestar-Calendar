@@ -1,9 +1,24 @@
-import { POST } from '../../../../src/app/api/login/route'
+import { mockPrisma } from '../../../mocks/prisma'
+jest.mock('@/src/lib/prisma', () => ({
+  prisma: mockPrisma,
+}))
+
+jest.mock('bcrypt')
+jest.mock('jsonwebtoken')
+jest.mock('next/server', () => ({
+  NextResponse: {
+    json: jest.fn((data, init) => ({
+      json: () => Promise.resolve(data),
+      status: init?.status || 200,
+      ...init,
+    })),
+  },
+}))
+
+import { POST } from '@/src/app/api/login/route'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { mockFindUnique } from '../../../../__mock__/@prisma/client'
 
-// Mock da classe Request que simula o comportamento de um objeto Request da Web API
 class MockRequest {
   body: any
 
@@ -16,30 +31,15 @@ class MockRequest {
   }
 }
 
-// Mock do NextResponse
-jest.mock('next/server', () => {
-  return {
-    NextResponse: {
-      json: jest.fn((data, init) => {
-        return {
-          json: () => Promise.resolve(data),
-          status: init?.status || 200,
-          ...init,
-        }
-      }),
-    },
-  }
-})
-
-jest.mock('bcrypt')
-jest.mock('jsonwebtoken')
-
 const mockCompare = bcrypt.compare as jest.Mock
 const mockSign = jwt.sign as jest.Mock
 
 describe('POST /api/login', () => {
   beforeEach(() => {
     jest.clearAllMocks()
+  })
+  beforeAll(() => {
+    process.env.JWT_SECRET = 'test-secret'
   })
 
   it('retorna 400 se email ou senha não forem fornecidos', async () => {
@@ -58,7 +58,7 @@ describe('POST /api/login', () => {
       password: '123',
     }) as any
 
-    mockFindUnique.mockResolvedValue(null)
+    mockPrisma.user.findUnique.mockResolvedValue(null)
 
     const res = await POST(req)
     const data = await res.json()
@@ -73,7 +73,7 @@ describe('POST /api/login', () => {
       password: '123',
     }) as any
 
-    mockFindUnique.mockResolvedValue({
+    mockPrisma.user.findUnique.mockResolvedValue({
       id: 'abc123',
       email: 'teste@email.com',
       password: 'hashedpassword',
@@ -94,7 +94,7 @@ describe('POST /api/login', () => {
       password: '123',
     }) as any
 
-    mockFindUnique.mockResolvedValue({
+    mockPrisma.user.findUnique.mockResolvedValue({
       id: 'abc123',
       email: 'teste@email.com',
       password: 'hashedpassword',
@@ -105,9 +105,6 @@ describe('POST /api/login', () => {
 
     const res = await POST(req)
     const data = await res.json()
-
-    console.log('res.status:', res.status)
-    console.log('data:', data)
 
     expect(res.status).toBe(200)
     expect(data.token).toBe('fake-jwt-token')
@@ -120,9 +117,7 @@ describe('POST /api/login', () => {
       password: '123',
     }) as any
 
-    mockFindUnique.mockImplementation(() => {
-      throw new Error('Database error')
-    })
+    mockPrisma.user.findUnique.mockRejectedValue(new Error('Database error'))
 
     const res = await POST(req)
     const data = await res.json()
