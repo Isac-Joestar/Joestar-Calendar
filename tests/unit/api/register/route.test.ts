@@ -74,4 +74,20 @@ describe('POST /api/register', () => {
     expect(res.status).toBe(500)
     expect(data.message).toBe('Erro ao criar usuário')
   })
+
+  it('deve falhar se os dados forem inválidos', async () => {
+    const req = new MockRequest({
+      firstname: 'João',
+      lastname: 'Silva',
+      email: 'teste.com',
+      password: '123456',
+      role: '',
+    }) as any
+
+    const res = await POST(req)
+    const data = await res.json()
+
+    expect(res.status).toBe(400)
+    expect(data.message).toBe('Dados inválidos')
+  })
 })
