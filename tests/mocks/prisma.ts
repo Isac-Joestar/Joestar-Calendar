@@ -1,4 +1,3 @@
-// Create a proper mock for Prisma client
 export const mockPrisma = {
   user: {
     findUnique: jest.fn(),
@@ -8,7 +7,6 @@ export const mockPrisma = {
   $disconnect: jest.fn().mockResolvedValue(undefined),
 }
 
-// Reset all mocks before each test
 export const resetMocks = () => {
   Object.values(mockPrisma.user).forEach((mock) => mock.mockReset())
 }

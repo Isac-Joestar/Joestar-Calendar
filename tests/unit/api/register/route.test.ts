@@ -3,7 +3,6 @@ jest.mock('@/src/lib/prisma', () => ({
   prisma: mockPrisma,
 }))
 import { POST } from '@/src/app/api/register/route'
-import { resetMocks } from '@/tests/mocks/prisma'
 
 class MockRequest {
   body: any
@@ -30,7 +29,6 @@ jest.mock('next/server', () => ({
 describe('POST /api/register', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    resetMocks()
   })
 
   it('falhar se o e-mail já estiver cadastrado', async () => {

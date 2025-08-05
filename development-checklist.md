@@ -1,81 +1,109 @@
-# 📆 Joestar Calendar
+---
 
-## 🎯 Etapa 1: Fundação e Direcionamento
+# 📆 **Joestar Calendar — MVP Roadmap**
 
-- [x] Definir objetivo (agenda online para profissionais autônomos)
-- [x] Escolher nicho inicial (ex: barbearia ou clínica)
-- [x] Mapear personas (ex: dono de barbearia, cliente comum)
-- [x] Listar funcionalidades MVP (mínimo viável)
-- [x] Escolher stack tecnológica (Next.js, Node.js, MongoDB, etc)
+Aplicação de agendamento online para profissionais autônomos.
+
+## 🔰 1. Estratégia e Planejamento
+
+- [x] Definir objetivo (agenda online para autônomos)
+- [x] Escolher nicho inicial (ex: barbearias ou clínicas)
+- [x] Mapear personas (ex: dono de barbearia, cliente final)
+- [x] Levantar funcionalidades mínimas do MVP
+- [x] Escolher stack: `Next.js`, `Node.js`, `TypeScript`, `Prisma`, `MongoDB`, `Zod`, `Jest`, `ESLint`, `Prettier`, `Husky`, `Docker`, `GitHub Actions`
 - [x] Criar repositório GitHub
-- [x] Criar modelo de dados básico (usuários, clientes, agendamentos)
+- [x] Modelar banco (usuários, clientes, agendamentos)
 
-## 🛠️ Etapa 2: Infraestrutura e Ambiente
+---
 
-- [x] Configurar ambiente com Docker (MongoDB + Node)
-- [x] Estrutura inicial (front e back separados ou monorepo)
-- [x] Configurar ESLint, Prettier, Husky
+## 🧱 2. Infraestrutura e Qualidade
+
+- [x] Configurar Docker com MongoDB + App
+- [x] Estrutura inicial (monorepo Next.js API Routes + Front)
+- [x] Configurar ESLint, Prettier e Husky (padrão de código)
 - [x] Configurar variáveis de ambiente
-- [x] Instalar e preparar Prisma com MongoDB Atlas
+- [x] Integrar Prisma com MongoDB Atlas
+- [x] CI com GitHub Actions
+- [x] Cobertura com Jest + Testes de API
 
-## 🎨 Etapa 3: Front-end (MVP focado)
+---
 
-- [x] Criar estrutura base com Next.js + TypeScript
-- [ ] Página pública com botão "Agendar horário"
-- [ ] Página de Login/Registro simples
-- [ ] Dashboard básico com FullCalendar
-- [ ] Formulário para agendar novo horário
+## 🎨 3. Interface do Usuário (Front-end)
+
+- [x] Base com `Next.js + TypeScript`
+- [ ] Landing page pública
+- [ ] Página de Login/Registro
+- [ ] Dashboard com calendário (`FullCalendar`)
+- [ ] Formulário de agendamento
 - [ ] Listagem de agendamentos
-- [ ] Página de perfil (dados do profissional)
-- [ ] Integração com API
-- [ ] Validação de formulários
+- [ ] Página de perfil do profissional
+- [ ] Integração com back-end via API
+- [ ] Validação com `Zod` + mensagens amigáveis
 
-## ⚙️ Etapa 4: Back-end (Essencial)
+---
 
-- [x] Estrutura base com Express + TypeScript
-- [x] Autenticação (JWT + bcrypt)
-- [ ] Rotas protegidas com middleware
-- [ ] CRUD de agendamentos
-- [ ] CRUD de clientes
+## ⚙️ 4. API e Lógica de Negócio (Back-end)
+
+- [x] Base com `Next.js API Routes` (ou Express se preferir separação)
+- [x] Criptografia com `bcrypt`
+- [x] Autenticação com `JWT`
+- [ ] Middleware de rotas protegidas (ex: `withAuth`)
+- [ ] CRUD: Usuário / Agendamentos / Clientes
+- [ ] Validação com `Zod` no back-end
 - [ ] Tratamento global de erros
 
-## 🔐 Etapa 5: Segurança e Controle
+---
 
-- [x] Criptografar senhas
-- [ ] Cookies seguros (HTTP-only)
-- [ ] Rate limiting básico (evitar spam/agendamentos indevidos)
+## 🔐 5. Segurança
 
-## 📩 Etapa 6: Comunicação
+- [x] Criptografia de senha com `bcrypt`
+- [ ] Cookies HTTP-only e Secure
+- [ ] Rate limiting básico para evitar spam
+- [ ] Verificação de input malicioso
 
-- [ ] Configurar Nodemailer com Gmail
+---
+
+## 💌 6. Comunicação
+
+- [ ] Configurar `Nodemailer` com Gmail ou Resend
 - [ ] Enviar e-mail de confirmação após agendamento
-- [ ] (Opcional MVP) CRON para lembrete de agendamento
+- [ ] (Opcional) CRON de lembrete antes do horário marcado
 
-## ☁️ Etapa 7: Upload de Imagem (Básico)
+---
 
-- [ ] Criar conta Cloudinary
-- [ ] Permitir upload de imagem do profissional (avatar)
-- [ ] Salvar URL no banco
+## 🖼️ 7. Upload de Avatar (Profissional)
 
-## 🚀 Etapa 8: Deploy e Validação
+- [ ] Integração com `Cloudinary` ou `UploadThing`
+- [ ] Permitir upload de imagem no perfil
+- [ ] Salvar URL no MongoDB via Prisma
 
-- [ ] Front-end no Vercel
-- [ ] Back-end no Render ou Railway
-- [ ] Banco de dados no MongoDB Atlas
-- [ ] Teste funcional com um cliente real (beta test)
-- [ ] Coletar feedback de uso
+---
 
-## 📋 Etapa 9: Portfólio e Apresentação
+## 🚀 8. Deploy e Validação
 
-- [x] Criar README.md explicativo
-- [x] Criar seção no portfólio
-- [ ] Adicionar prints e vídeo de navegação
-- [ ] Disponibilizar link online para teste
+- [ ] Deploy front-end com `Vercel`
+- [ ] Deploy back-end com `Render` ou `Railway`
+- [ ] MongoDB Atlas configurado com acesso seguro
+- [ ] Teste com usuário real (beta)
+- [ ] Coletar feedback qualitativo (tipo Google Forms)
 
-## 🌱 Etapa 10: Evolução do Produto (pós-MVP)
+---
 
-- [ ] Multiusuários (barbeiros diferentes, múltiplas agendas)
-- [ ] Painel com estatísticas e métricas
-- [ ] Sistema de notificações via WhatsApp ou e-mail
-- [ ] Sistema de pagamento com Stripe (modo teste)
-- [ ] Aplicativo mobile (React Native)
+## 🖼️ 9. Portfólio e Divulgação
+
+- [ ] Criar README.md explicativo
+- [ ] Adicionar ao portfólio
+- [ ] Prints + vídeo de navegação no sistema
+- [ ] Disponibilizar link online para teste (com demo login)
+
+---
+
+## 🌱 10. Evolução Pós-MVP (V2)
+
+- [ ] Multiusuários (vários profissionais por conta)
+- [ ] Estatísticas (agendamentos por semana, cancelamentos etc.)
+- [ ] Notificações via WhatsApp (usando Twilio) ou e-mail
+- [ ] Integração com `Stripe` (pagamentos agendados)
+- [ ] App mobile com `React Native` + Firebase Auth
+
+---
