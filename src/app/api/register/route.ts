@@ -4,10 +4,14 @@ import { prisma } from '@/src/lib/prisma'
 import { z } from 'zod'
 
 const userSchema = z.object({
-  firstname: z.string().min(1),
-  lastname: z.string().min(1),
-  email: z.string().email(),
-  password: z.string().min(6),
+  firstname: z.string().min(1, 'Nome é obrigatório'),
+  lastname: z.string().min(1, 'Sobrenome é obrigatório'),
+  email: z
+    .string()
+    .refine((val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), {
+      message: 'E-mail inválido',
+    }),
+  password: z.string().min(6, 'A senha precisa de pelo menos 6 caracteres'),
   role: z.enum(['Client', 'Provider']),
   phone: z.string().optional(),
   service: z.string().optional(),

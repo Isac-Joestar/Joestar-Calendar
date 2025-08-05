@@ -38,7 +38,7 @@ Aplicação de agendamento online para profissionais autônomos.
 - [ ] Listagem de agendamentos
 - [ ] Página de perfil do profissional
 - [ ] Integração com back-end via API
-- [ ] Validação com `Zod` + mensagens amigáveis
+- [x] Validação com `Zod` + mensagens amigáveis
 
 ---
 
