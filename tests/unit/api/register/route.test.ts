@@ -27,9 +27,6 @@ jest.mock('next/server', () => ({
   },
 }))
 
-// jest.mock('bcrypt')
-// const mockHash = bcrypt.hash as jest.Mock
-
 describe('POST /api/register', () => {
   beforeEach(() => {
     jest.clearAllMocks()
@@ -89,5 +86,21 @@ describe('POST /api/register', () => {
 
     expect(res.status).toBe(400)
     expect(data.message).toBe('Dados inválidos')
+  })
+
+  it('deve registrar se os dados forem válidos', async () => {
+    const req = new MockRequest({
+      firstname: 'João',
+      lastname: 'Silva',
+      email: 'teste@gmail.com',
+      password: '123456',
+      role: 'Client',
+    }) as any
+
+    const res = await POST(req)
+    const data = await res.json()
+
+    expect(res.status).toBe(201)
+    expect(data.message).toBe('Usuário criado com sucesso')
   })
 })
