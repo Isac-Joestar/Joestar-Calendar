@@ -1,6 +1,8 @@
+import { mockPrisma } from '../../../mocks/prisma'
+jest.mock('@/src/lib/prisma', () => ({
+  prisma: mockPrisma,
+}))
 import { POST } from '@/src/app/api/register/route'
-// import bcrypt from 'bcrypt'
-import { prisma } from '@/src/lib/prisma'
 import { resetMocks } from '@/tests/mocks/prisma'
 
 class MockRequest {
@@ -14,16 +16,6 @@ class MockRequest {
     return this.body
   }
 }
-
-jest.mock('@/src/lib/prisma', () => ({
-  prisma: {
-    user: {
-      findUnique: jest.fn(),
-      create: jest.fn(),
-    },
-    $disconnect: jest.fn(),
-  },
-}))
 
 jest.mock('next/server', () => ({
   NextResponse: {
@@ -53,7 +45,7 @@ describe('POST /api/register', () => {
       role: 'Client',
     }) as any
 
-    ;(prisma.user.findUnique as jest.Mock).mockResolvedValue({
+    ;(mockPrisma.user.findUnique as jest.Mock).mockResolvedValue({
       id: '123',
       email: 'teste@gmail.com',
     })
@@ -63,5 +55,23 @@ describe('POST /api/register', () => {
 
     expect(res.status).toBe(400)
     expect(data).toHaveProperty('message', 'Usuário já cadastrado')
-  }, 10000)
+  })
+
+  it('retorna 500 se ocorrer um erro no servidor', async () => {
+    const req = new MockRequest({
+      firstname: 'João',
+      lastname: 'Silva',
+      email: 'teste@gmail.com',
+      password: '123456',
+      role: 'Client',
+    }) as any
+
+    mockPrisma.user.findUnique.mockRejectedValue(new Error('Database Error'))
+
+    const res = await POST(req)
+    const data = await res.json()
+
+    expect(res.status).toBe(500)
+    expect(data.message).toBe('Erro ao criar usuário')
+  })
 })
