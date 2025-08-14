@@ -1,7 +1,5 @@
 import React from 'react'
 import { IoHome } from 'react-icons/io5'
-import { MdNotificationsActive } from 'react-icons/md'
-import { FaMoneyBillTrendUp } from 'react-icons/fa6'
 import { GrAnalytics } from 'react-icons/gr'
 import { GrGroup } from 'react-icons/gr'
 
@@ -10,7 +8,7 @@ function Menu() {
     <div className="w-72 h-screen bg-white rounded-tr-[25px] rounded-br-[25px] pl-3 pr-3 pt-5 flex items-start flex-col text-black">
       <div className="flex flex-row items-center justify-between cursor-pointer w-full bottom-1px border-b-2 pb-3 border-gray-500">
         <div className=" flex row gap-3 items-center ">
-          <div className=" w-[45px] h-[45px] rounded-[12px] overflow-hidden border-2 p-0.5 ">
+          <div className=" w-[45px] h-[45px] rounded-[12px] overflow-hidden border-purple-500 border-2 p-0.5 ">
             <img
               className="rounded-[9px]"
               src="https://i.pinimg.com/1200x/d7/e5/8b/d7e58bd3d42f2d01a88855bafe3236d1.jpg"
@@ -49,30 +47,42 @@ function Menu() {
                 <div className="hidden w-1 h-[25px] mr-3 bg-purple-500 rounded-[10px]"></div>
 
                 <div className="ml-[15px] flex items-center gap-[10px] rounded-[7px] h-full w-full justify-start pl-2 pr-2 bg-white ">
-                  <div className="text-black text-[20px] flex items-center">
-                    <IoHome />
+                  <div className="text-black  flex items-center w-[20px]">
+                    <img
+                      src="./icons/menu-page.svg"
+                      alt=""
+                      className="w-full"
+                    />
                   </div>
                   <p className="leading-[1] font-bold">página</p>
                 </div>
               </div>
 
               <div className="h-[35px] w-full rounded-[7px] flex flex-row items-center cursor-pointer">
-                <div className="hidden w-1 h-[25px] mr-3 bg-purple-500 rounded-[10px]"></div>
+                <div className="hidden w-1  mr-3 bg-purple-500 rounded-[10px]"></div>
 
                 <div className="ml-[15px] flex items-center gap-[10px] rounded-[7px] h-full w-full justify-start pl-2 pr-2 bg-white ">
-                  <div className="text-black text-[20px] flex items-center">
-                    <MdNotificationsActive />
+                  <div className="text-black  flex items-center w-[20px]">
+                    <img
+                      src="./icons/menu-notify.svg"
+                      alt=""
+                      className="w-full"
+                    />
                   </div>
                   <p className="leading-[1] font-bold">Notificações</p>
                 </div>
               </div>
 
               <div className="h-[35px] w-full rounded-[7px] flex flex-row items-center cursor-pointer">
-                <div className="hidden w-1 h-[25px] mr-3 bg-purple-500 rounded-[10px]"></div>
+                <div className="hidden w-1  mr-3 bg-purple-500 rounded-[10px]"></div>
 
                 <div className="ml-[15px] flex items-center gap-[10px] rounded-[7px] h-full w-full justify-start pl-2 pr-2 bg-white ">
-                  <div className="text-black text-[20px] flex items-center">
-                    <FaMoneyBillTrendUp />
+                  <div className="text-black flex items-center w-[20px]">
+                    <img
+                      src="./icons/menu-earnings.svg"
+                      alt=""
+                      className="w-full"
+                    />
                   </div>
                   <p className="leading-[1] font-bold">Ganhos</p>
                 </div>
@@ -88,7 +98,7 @@ function Menu() {
 
                 <div className="ml-[15px] flex items-center gap-[10px] rounded-[7px] h-full w-full justify-start pl-2 pr-2 bg-white ">
                   <div className="text-black text-[20px] flex items-center">
-                    <MdNotificationsActive />
+                    <GrAnalytics />
                   </div>
                   <p className="leading-[1] font-bold">Análises</p>
                 </div>
@@ -99,7 +109,7 @@ function Menu() {
 
                 <div className="ml-[15px] flex items-center gap-[10px] rounded-[7px] h-full w-full justify-start pl-2 pr-2 bg-white ">
                   <div className="text-black text-[20px] flex items-center">
-                    <FaMoneyBillTrendUp />
+                    <GrGroup />
                   </div>
                   <p className="leading-[1] font-bold">Clientes</p>
                 </div>
@@ -114,10 +124,14 @@ function Menu() {
               <div className="hidden w-1 h-[25px] mr-3 bg-purple-500 rounded-[10px]"></div>
 
               <div className="ml-[15px] flex items-center gap-[10px] rounded-[7px] h-full w-full justify-start pl-2 pr-2 bg-white ">
-                <div className="text-black text-[20px] flex items-center">
-                  <GrAnalytics />
+                <div className="w-[20px] flex items-center">
+                  <img
+                    src="./icons/menu-config.svg"
+                    alt=""
+                    className="w-full"
+                  />
                 </div>
-                <p className="leading-[1] font-bold">Análises</p>
+                <p className="leading-[1] font-bold">Configurações</p>
               </div>
             </div>
 
@@ -125,10 +139,14 @@ function Menu() {
               <div className="hidden w-1 h-[25px] mr-3 bg-purple-500 rounded-[10px]"></div>
 
               <div className="ml-[15px] flex items-center gap-[10px] rounded-[7px] h-full w-full justify-start pl-2 pr-2 bg-white ">
-                <div className="text-black text-[20px] flex items-center">
-                  <GrGroup />
+                <div className="w-[20px] flex items-center">
+                  <img
+                    src="./icons/menu-support.svg"
+                    alt=""
+                    className="w-full"
+                  />
                 </div>
-                <p className="leading-[1] font-bold">Clientes</p>
+                <p className="leading-[1] font-bold">Suporte</p>
               </div>
             </div>
           </nav>
