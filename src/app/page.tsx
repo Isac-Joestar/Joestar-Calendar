@@ -1,18 +1,27 @@
-import Link from 'next/link'
-
 export default function Home() {
   return (
-    <div className="flex items-start justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Link href="/login" className="">
-        <button className="cursor-pointer border-1 py-[4px] px-[10px]  rounded-[4px] ">
-          Faça login
-        </button>
-      </Link>
-      <Link href="/register" className="">
-        <button className="cursor-pointer border-1 py-[4px] px-[10px] rounded-[4px] ">
-          Cadastre-se
-        </button>
-      </Link>
-    </div>
+    <main className="w-full h-screen">
+      <header className='w-full h-20 flex flex-row items-center justify-between px-5 border-b-2'>
+        <div className="cursor-pointer">
+          <p>
+            <span className='text-[22px] font-semibold text-blue-600'>Joestar</span> Calendar
+          </p>
+        </div>
+
+        <nav>
+          <ul className='flex flex-row items-center gap-4'>
+            <li className="cursor-pointer">Recursos</li>
+            <li className="cursor-pointer">Clientes</li>
+            <li className="cursor-pointer">Reservas</li>
+            <li className="cursor-pointer">Planos</li>
+          </ul>
+        </nav>
+
+        <div className="flex flex-row items-center gap-4">
+          <button className="cursor-pointer">Entrar</button>
+          <button className="cursor-pointer w-36 bg-blue-600 text-white h-10 rounded-[10px]">Solicitar demo</button>
+        </div>
+      </header>
+    </main>
   )
 }
